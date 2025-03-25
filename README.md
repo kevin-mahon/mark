@@ -1,4 +1,4 @@
-This repository is a personal project to create a mark tool similar to 
+This is just a shell script to create a mark tool similar to 
 nvim marks but for the file system.
 
 ## Features
