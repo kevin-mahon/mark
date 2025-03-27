@@ -11,6 +11,14 @@ while [[ $# -gt 0 ]]; do
             #find mark
             target=$(grep -m1 "^$2 " "$HOME/.marks" | cut -d" " -f2)
 
+
+            #if backmark exists
+            backmark=$(grep -m1 "^backmark " "$HOME/.marks" | cut -d" " -f2)
+            if [ ! -z "${backmark}" ]; then
+                # echo $backmark
+                sed -i "" -e "/^backmark /d" "$HOME/.marks" 2>/dev/null
+            fi
+
             # save backmark
             mark="backmark"
             directory="$(pwd)"
@@ -24,11 +32,14 @@ while [[ $# -gt 0 ]]; do
             ;;
         -b|--back)
             #find backmark
+            directory="$(pwd)"
             backmark=$(grep -m1 "^backmark " "$HOME/.marks" | cut -d" " -f2)
             # echo $backmark
-            sed -i "" -e "/^backmark /d" "$HOME/.marks"
+            sed -i "" -e "/^backmark /d" "$HOME/.marks" 2>/dev/null
             #jump to it
             cd $backmark
+            mark="backmark"
+            echo $mark $directory >> "$HOME/.marks"
             shift
             ;;
         -e|--edit)
