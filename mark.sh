@@ -50,7 +50,29 @@ while [[ $# -gt 0 ]]; do
             cat "$HOME/.marks"
             shift
             ;;
+        -h|--help)
+            cat <<STOP
 
+                                            MARKS: 
+
+mark.sh is a utility to mark directories with a short identifier to allow quickly switching between
+directories.
+
+To use simply source the script with the relevant argument.
+
+The install.sh script will add bash aliases for sourcing the script with different arguments.
+
+
+    m <name>    : marks a directory with identifier <name>
+    m -j <name> : jump to directory corresponding to identifier <name>
+    m -b        : jump back to previous directory
+    m -l        : list all marks
+    m -r <name> : remove a mark with identifier <name>
+    m -h        : displays this text 
+
+STOP
+            shift
+            ;;
         *)
             mark=$1 # save mark
             directory="$(pwd)"
