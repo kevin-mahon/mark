@@ -3,7 +3,11 @@
 while [[ $# -gt 0 ]]; do
     case $1 in
         -r|--remove)
-            sed -i "" -e "/^$2 /d" "$HOME/.marks"
+            if [[ "$OSTYPE" == "darwin"* ]]; then
+                sed -i "" -e "/^$2 /d" "$HOME/.marks"
+            else
+                sed -i -e "/^$2 /d" "$HOME/.marks"
+            fi
             shift
             shift
             ;;
@@ -15,7 +19,11 @@ while [[ $# -gt 0 ]]; do
             backmark=$(grep -m1 "^backmark " "$HOME/.marks" | cut -d" " -f2)
             if [ ! -z "${backmark}" ]; then
                 # echo $backmark
-                sed -i "" -e "/^backmark /d" "$HOME/.marks" 2>/dev/null
+                if [[ "$OSTYPE" == "darwin"* ]]; then
+                    sed -i "" -e "/^backmark /d" "$HOME/.marks" 2>/dev/null
+                else
+                    sed -i -e "/^backmark /d" "$HOME/.marks" 2>/dev/null
+                fi
             fi
 
             # save backmark
@@ -34,7 +42,11 @@ while [[ $# -gt 0 ]]; do
             directory="$(pwd)"
             backmark=$(grep -m1 "^backmark " "$HOME/.marks" | cut -d" " -f2)
             # echo $backmark
-            sed -i "" -e "/^backmark /d" "$HOME/.marks" 2>/dev/null
+            if [[ "$OSTYPE" == "darwin"* ]]; then
+                sed -i "" -e "/^backmark /d" "$HOME/.marks" 2>/dev/null
+            else
+                sed -i -e "/^backmark /d" "$HOME/.marks" 2>/dev/null
+            fi
             #jump to it
             cd $backmark
             mark="backmark"

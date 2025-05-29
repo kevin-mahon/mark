@@ -1,9 +1,9 @@
 #!/bin/bash
 
 directory="$(pwd)"
-MARK_CMD="alias m='source $directory'"
-JUMP_CMD="alias j='source $directory -j'"
-BACK_CMD="alias b='source $directory -b'"
+MARK_CMD="alias m='source $directory/mark.sh'"
+JUMP_CMD="alias j='source $directory/mark.sh -j'"
+BACK_CMD="alias b='source $directory/mark.sh -b'"
 
 
 SHELL_CONFIG_FILE=""
