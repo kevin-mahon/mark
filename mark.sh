@@ -11,7 +11,6 @@ while [[ $# -gt 0 ]]; do
             #find mark
             target=$(grep -m1 "^$2 " "$HOME/.marks" | cut -d" " -f2)
 
-
             #if backmark exists
             backmark=$(grep -m1 "^backmark " "$HOME/.marks" | cut -d" " -f2)
             if [ ! -z "${backmark}" ]; then
